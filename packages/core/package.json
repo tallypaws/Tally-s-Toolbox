@@ -1,0 +1,23 @@
+{
+  "name": "@thetally/toolbox",
+  "version": "1.0.0",
+  "description": "Core utils and helpers for nodejs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": ["utility", "debounce", "sleep"],
+  "author": "",
+  "license": "ISC"
+}

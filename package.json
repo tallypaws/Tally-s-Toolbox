@@ -1,0 +1,27 @@
+{
+  "name": "toolbox",
+  "version": "1.0.0",
+  "description": "A monorepo of utilities and tools and halpers and types",
+  "private": true,
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "publish": "npm publish --workspaces --access public",
+    "test": "vitest run",
+    "create": "node createPackage.mjs"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.8"
+  },
+  "dependencies": {
+    "@types/node": "^25.0.3"
+  }
+}
+
