@@ -1,9 +1,17 @@
-/**
- * one^two
- * @param one
- * @param two
- * @returns one^two
+/*
+ * JSDocs proofread by Kat (discord, GH @AutoTheKat)
+ * Code by Tally Paws (discord @Tally.gay | GH @TallyPaws)
+ * 
+ * JAN/10/2026 0:20 EST ~
  */
+
+/**
+ * BigInt Exponent Operation.
+ * @param one The base.
+ * @param two The exponent.
+ * @returns The bigint result of `one` to the power of `two`.
+ */
+// kat loves herself some math terminology :D
 export function bigIntPower(one: bigint, two: bigint): bigint {
   if (two === 0n) return 1n;
   const powerTwo = bigIntPower(one, two / 2n);
@@ -12,12 +20,12 @@ export function bigIntPower(one: bigint, two: bigint): bigint {
 }
 
 /**
- * converts numbers between bases
- * @param value The value to convert betweem bases
- * @param sourceBase the base of value
- * @param outBase the base to convert value to
- * @param chars the characters to use, defaults to convertBase.defaultChars
- * @returns value in base outBase
+ * Converts numbers between bases. (e.g. hexadecimal to binary)
+ * @param value The value to convert.
+ * @param sourceBase The base of value.
+ * @param outBase The result's base.
+ * @param chars The characters to use, defaults to `convertBase.defaultChars`.
+ * @returns The resulting value in specified base using the specified characters.
  */
 export function convertBase(
   value: string,
@@ -55,32 +63,33 @@ export function convertBase(
 }
 
 /**
- * the default characters used in convertBase
+ * The default characters used in convertBase.
  */
 convertBase.defaultChars =
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-/=[];',.";
 /**
- * the maximum base for convertBase, assuming default characters
+ * The maximum base for convertBase, using the default characters.
  */
 convertBase.MAX_BASE = convertBase.defaultChars.length;
 
 /**
- * Clamps a number between min and max
- * @param number 
- * @param min 
- * @param max 
- * @returns 
+ * Clamps a number between min and max.
+ * @param number The number to clamp.
+ * @param min The minimum number.
+ * @param max The maximum number.
+ * @returns The number clamped to the range specified.
  */
+// Kat didn't understand this...
 export function clamp(number: number, min: number, max: number) {
   return Math.max(min, Math.min(max, number));
 }
 
 /**
  * Returns a random integer between min and max 
- * @param min 
- * @param max 
- * @param inclusive if true, max is included in the possible outputs
- * @returns 
+ * @param min The minimum number.
+ * @param max The maximum number. Exclusive by default, like Java's `Math.Random()`.
+ * @param inclusive Determines whether the `max` is included or excluded from the range.
+ * @returns A random number within the range specified.
  */
 export function randInt(min: number, max: number, inclusive = true) {
   if (min > max) {
@@ -91,18 +100,23 @@ export function randInt(min: number, max: number, inclusive = true) {
 
 /**
  * Returns true approximately (probablity * 100)% of the time
- * @param probability 
- * @returns 
+ * @param probability Number between 0 and 1.
+ * @returns A boolean averaging the probability specified.
  */
 export function chance(probability: number): boolean {
   return Math.random() < probability;
 }
 
 /**
- * Rounds a number to a certain number of decimals
- * @param n 
- * @param decimals 
- * @returns 
+ * Rounds a number to a certain number of decimals.
+ * @param n The number to round.
+ * @param decimals The number of places.
+ * @returns Number rounded to specified places.
+ * @example 
+ * ```ts
+ * console.log(roundTo(Math.PI, 5));
+ * ```
+ * shows as `3.14159` in the console.
  */
 export function roundTo(n: number, decimals: number): number {
   const f = 10 ** decimals;
@@ -110,22 +124,23 @@ export function roundTo(n: number, decimals: number): number {
 }
 
 /**
- * Interpolates between a and b
+ * Interpolates between a and b.
  * @param a 
  * @param b 
  * @param t 
  * @returns 
  */
+// Kat also doesn't understand this (or interpolation at large). She's sorry about that.
 export function lerp(a: number, b: number, t: number): number {
   return a + (b - a) * t;
 }
 
 /**
- * determines if n is in a range
- * @param n 
- * @param min 
- * @param max 
- * @returns true if n is inbetween min and max
+ * Determines if a value is in a range.
+ * @param n The number to check for in a range.
+ * @param min The minimum of the range.
+ * @param max The maximum of the range.
+ * @returns If the number is in the specified range.
  */
 export function inRange(n: number, min: number, max: number): boolean {
   return n >= min && n <= max;

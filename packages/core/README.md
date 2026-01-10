@@ -1,2 +1,5 @@
 # Tally's Toolbox
-a collection of classes and functions I use alot and i need them in one place im tired of copying them from other projects because theyre kinda hard to find
+this is her toolbox.
+It contains a bunch of typescript functions useful to her and maybe even you!
+
+(also [kat](https://github.com/autothekat/) wants a mention so here it is. she helped with jsdocs.)

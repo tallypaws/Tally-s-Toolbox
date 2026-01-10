@@ -1,5 +1,15 @@
 import { Flat } from "./types";
 
+/*
+ * JSDocs proofread by Kat (discord, GH @AutoTheKat)
+ * Code by Tally Paws (discord @Tally.gay | GH @TallyPaws)
+ * 
+ * JAN/10/2026 0:20 EST ~
+ */
+
+// neither of us can figure out how to explain these lol so no jsdocs for you!!!!! 💖💖💖 ~Kat
+
+
 const msValues = {
   ms: 1,
   s: 1000,
@@ -87,11 +97,6 @@ function durationShort(initialMs = 0): DurationBuilderShort {
     toH: () => total / msValues.h,
     toD: () => total / msValues.d,
 
-    /**
-     * a
-     * @param v 
-     * @returns 
-     */
     ms: (v) => add(v, msValues.ms),
     s: (v) => add(v, msValues.s),
     m: (v) => add(v, msValues.m),
