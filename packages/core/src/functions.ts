@@ -1,5 +1,12 @@
 import { sleep } from "./promises";
 
+/*
+ * JSDocs proofread by Kat (discord, GH @AutoTheKat)
+ * Code by Tally Paws (discord @Tally.gay | GH @TallyPaws)
+ * 
+ * JAN/10/2026 0:20 EST ~
+ */
+
 export interface DebouncedFunction<T extends (...args: any[]) => any> {
   (...args: Parameters<T>): void;
   cancel: () => void;
@@ -7,11 +14,11 @@ export interface DebouncedFunction<T extends (...args: any[]) => any> {
 }
 
 /**
- * Debounces a function to prevent excessive calling
- * @param fn The function to debounce
- * @param delay The number of milliseconds to wait after the last call before calling fn
- * @param options immediate: If true, calls fn immediately if more than delay ms since last call, any further calls within delay ms will be debounced
- * @returns The Debounced function
+ * Debounces a function to prevent excessive calling.
+ * @param fn The function to debounce.
+ * @param delay The number of milliseconds to wait after the last call before calling the function again.
+ * @param options Immediate: If True, it will call the function immediately if more than the delay milliseconds since last call has passed. Any further calls within delay milliseconds will be debounced.
+ * @returns The Debounced function.
  */
 export function debounce<T extends (...args: any[]) => any>(
   fn: T,
@@ -70,10 +77,10 @@ export function debounce<T extends (...args: any[]) => any>(
 }
 
 /**
- * Throttles a function to only run once for every interval ms
- * @param fn
- * @param interval Minimum amount of time betweeen fn calls
- * @returns The throttled function
+ * Throttles a function to only run once for every interval of time.
+ * @param fn The function to throttle.
+ * @param interval Minimum amount of milliseconds betweeen function calls.
+ * @returns The throttled function.
  */
 export function throttle<F extends (this: any, ...args: any[]) => void>(
   fn: F,
@@ -100,10 +107,10 @@ export function throttle<F extends (this: any, ...args: any[]) => void>(
 }
 
 /**
- * Compares values recursivly
- * @param a First object / value
- * @param b Second object / value
- * @returns If both are equal
+ * Compares values recursively.
+ * @param a First object or primitive.
+ * @param b Second object or primitive.
+ * @returns If both objects are equal or not.
  */
 export function deepEqual(a: any, b: any): boolean {
   if (Object.is(a, b)) return true;
@@ -116,9 +123,9 @@ export function deepEqual(a: any, b: any): boolean {
 }
 
 /**
- * Only allows a function to be called once. if called multiple times, the stored result is returned
- * @param fn Function to limit
- * @returns
+ * Only allows a function to be called once. If called more than once, the stored result is returned.
+ * @param fn Function to limit.
+ * @returns The stored result of the function.
  */
 export function once<F extends (this: any, ...args: any[]) => any>(fn: F) {
   let called = false;
@@ -133,10 +140,10 @@ export function once<F extends (this: any, ...args: any[]) => any>(fn: F) {
 }
 
 /**
- * Picks certain keys from an object
- * @param obj The object to pick keys from
- * @param keys The keys to pick from the object
- * @returns An object with only the provided keys
+ * Picks certain keys from an object.
+ * @param obj The object to pick keys from.
+ * @param keys The keys to pick from the object.
+ * @returns An object with only the specified keys.
  */
 export function pick<T, K extends readonly (keyof T)[]>(
   obj: T,
@@ -146,10 +153,10 @@ export function pick<T, K extends readonly (keyof T)[]>(
 }
 
 /**
- * Excludes certain keys from an object
- * @param obj The object to exclude keys from
- * @param keys The keys to exclude
- * @returns An object with the provided keys exluded
+ * Excludes certain keys from an object.
+ * @param obj The object to exclude keys from.
+ * @param keys The keys to exclude.
+ * @returns An object with the specified keys excluded.
  */
 export function omit<
   T extends Record<string, any>,
@@ -161,11 +168,11 @@ export function omit<
   ) as Omit<T, K[number]>;
 }
 /**
- * Retries an async function attempts times with optional delay
- * @param fn The function to reply
- * @param attempts Max number of attemps
- * @param delayMs Optional number of milliseconds to wait between tries
- * @returns Result of fn
+ * Retries an async function an amount of times with optional delay.
+ * @param fn The function to retry.
+ * @param attempts Number of attempts to run.
+ * @param delayMs Optional number of milliseconds to wait between tries.
+ * @returns Result of the function.
  */
 export async function retry<T>(
   fn: () => Promise<T>,
@@ -185,13 +192,14 @@ export async function retry<T>(
 }
 
 /**
- * noop: does nothing
+ * no operation (like in assembly code)
  */
+// (Kat finds this very very funny)
 export const noop = () => {};
 
 /**
- * Executes a function and catches any errors and returns a tuple, similar to golang
- * @param fn The function to execute
+ * Executes a function and catches any errors and returns a tuple, similar to GoLang.
+ * @param fn The function to execute.
  * @returns A tuple where:
  *   - The first element is the error if one was thrown, otherwise `null`.
  *   - The second element is the return value of `fn` if no error occurred.
@@ -216,9 +224,9 @@ export function tryCatch<T>(
 }
 
 /**
- * A function to tap into a value
- * @param fn A function to do something with a value
- * @returns the same value passed in
+ * A function to tap into a value.
+ * @param fn A function that takes a value.
+ * @returns The value passed into the function `fn`.
  * @example
  * ```ts
  * const double = (x: number) => x * 2;
@@ -238,11 +246,11 @@ export function tap<T>(fn: (v: T) => void) {
 }
 
 /**
- * A generator for creating number ranges
- * @param end an end value (exclusive) starting at 0 or an object with start, step and end values
- * start: the value to start at (inclusive)
- * step: how far to increment in each iteration, can be negative, defaults to 1
- * end: the value to end at (exclusive)
+ * A generator for creating number ranges.
+ * @param end An end value (exclusive) starting at 0 or an object with start, step and end values.
+ * start: The value to start at (inclusive).
+ * step: How far to increment in each iteration, can be negative, defaults to 1.
+ * end: The value to end at (exclusive).
  * @example
  * ```ts
  * for (const i of range(5)) {
@@ -295,9 +303,9 @@ export function* range(
 }
 
 /**
- * Returns a generator that loops through an iterator forever
- * @param iterable the iterator to loop over
- * @returns A looping generator
+ * Creates a generator that loops through an iterator indefinitely.
+ * @param iterable The iterator to loop over.
+ * @returns A looping generator using the iterator specified.
  */
 export function* cycle<T>(iterable: Iterable<T>): Generator<T> {
   const items = [...iterable];
@@ -308,10 +316,10 @@ export function* cycle<T>(iterable: Iterable<T>): Generator<T> {
 }
 
 /**
- * chunks an array
- * @param arr The array to chunk
- * @param size Maximim size for a chunk
- * @returns
+ * Breaks an array into chunks.
+ * @param arr The array to chunk.
+ * @param size Chunk size. (up to this value)
+ * @returns The chunked array.
  */
 export function chunk<T>(arr: T[], size: number): T[][] {
   const out: T[][] = [];
@@ -320,9 +328,9 @@ export function chunk<T>(arr: T[], size: number): T[][] {
 }
 
 /**
- * shuffles an array
- * @param arr
- * @returns
+ * Shuffles an array.
+ * @param arr Array to shuffle.
+ * @returns Shuffled array.
  */
 export function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -334,9 +342,9 @@ export function shuffle<T>(arr: T[]): T[] {
 }
 
 /**
- * returns a random element from an array
- * @param arr
- * @returns
+ * Picks a random element from an array.
+ * @param arr Array to select from.
+ * @returns A random element from the specified array.
  */
 export function sample<T>(arr: T[]): T | undefined {
   if (!arr.length) return undefined;
@@ -344,10 +352,10 @@ export function sample<T>(arr: T[]): T | undefined {
 }
 
 /**
- * rotates an array
- * @param arr the array
- * @param n number of items to move, positive values rotate the array to the right, and negative values rotate it to the left
- * @returns new array
+ * Safely shifts an array by an amount.
+ * @param arr The array to rotate.
+ * @param n How much to shift by, and which way to shift; Positive ->, Negative <-.
+ * @returns Shifted (Rotated) array.
  */
 export function rotate<T>(arr: T[], n: number): T[] {
   const len = arr.length;

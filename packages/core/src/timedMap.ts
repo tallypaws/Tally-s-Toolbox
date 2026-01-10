@@ -1,8 +1,8 @@
 type Timer = ReturnType<typeof setTimeout>;
 
 /**
- * A map with time limited keys
- * keys are deleted after a set time
+ * A map with time-limited keys.
+ * Keys are deleted after a set amount of time.
  */
 export class TimedMap<K, V> {
   private map = new Map<K, V>();
