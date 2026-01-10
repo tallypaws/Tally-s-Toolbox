@@ -15,7 +15,7 @@
     "build": "tsup src/index.ts --format esm,cjs --dts"
   },
   "files": [
-    "dist"
+    "dist", "README.md"
   ],
   "keywords": ["utility", "debounce", "sleep"],
   "author": "",

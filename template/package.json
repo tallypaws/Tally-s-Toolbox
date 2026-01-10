@@ -15,7 +15,8 @@
     "build": "tsup src/index.ts --format esm,cjs --dts"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "keywords": [],
   "author": "Tally",

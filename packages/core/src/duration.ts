@@ -1,3 +1,5 @@
+import { Flat } from "./types";
+
 const msValues = {
   ms: 1,
   s: 1000,
@@ -6,9 +8,6 @@ const msValues = {
   d: 1000 * 60 * 60 * 24,
 };
 
-type Flat<T> = {
-  [K in keyof T]: T[K];
-};
 
 type DurationBuilderLongBase = {
   toMilliseconds(): number;
@@ -88,6 +87,11 @@ function durationShort(initialMs = 0): DurationBuilderShort {
     toH: () => total / msValues.h,
     toD: () => total / msValues.d,
 
+    /**
+     * a
+     * @param v 
+     * @returns 
+     */
     ms: (v) => add(v, msValues.ms),
     s: (v) => add(v, msValues.s),
     m: (v) => add(v, msValues.m),

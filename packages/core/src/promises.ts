@@ -1,3 +1,9 @@
+/**
+ * returns a promise that resolves in a certain amount of milliseconds
+ * note: this wont be 100% accurate
+ * @param ms the number of milliseconds to wait
+ * @returns the promise
+ */
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
@@ -17,6 +23,21 @@ export class AsyncQueue {
   }
 }
 
+
+/**
+ * Creates a deferred promise
+ *
+ * Useful when the promise must be resolved or rejected from outside its executor.
+ *
+ * @returns An object containing:
+ *  - `promise`: Promise<unknown>
+ *  - `resolve`: (value: unknown) => void
+ *  - `reject`: (reason?: any) => void
+ *
+ * @example
+ * const { promise, resolve, reject } = deferred();
+ * // resolve('ok') or reject(new Error('fail')) can be called later
+ */
 export function deferred() {
   let resolve = null as unknown as (value: unknown) => void;
   let reject = null as unknown as (reason?: any) => void;
@@ -27,6 +48,13 @@ export function deferred() {
   return { promise, resolve, reject };
 }
 
+/**
+ * Limits a promises waiting time with a timeout
+ * @param promise The promise to time
+ * @param ms How many milliseconds to wait before timing out
+ * @param error The error to throw after the set delay
+ * @returns The timed out promise
+ */
 export function timeoutPromise<T>(
   promise: Promise<T>,
   ms: number,

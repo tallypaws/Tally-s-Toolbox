@@ -27,3 +27,8 @@ export type TupleOf<
 > = R["length"] extends N ? R : TupleOf<T, N, [T, ...R]>;
 
 export type Merge<A, B> = Omit<A, keyof B> & B;
+
+export type Flat<T> = {
+  [K in keyof T]: T[K];
+};
+  
