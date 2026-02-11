@@ -42,8 +42,8 @@ export class AsyncQueue {
  *  - `reject`: (reason?: any) => void
  *
  * @example
- * `const { promise, resolve, reject } = deferred();`
- * `resolve('ok')` or `reject(new Error('fail'))` can be called later.
+ * const { promise, resolve, reject } = deferred();
+ * // `resolve('ok')` or `reject(new Error('fail'))` can be called later.
  */
 export function deferred() {
   let resolve = null as unknown as (value: unknown) => void;
